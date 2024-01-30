@@ -2,14 +2,14 @@ package terraform
 
 type TerraformEpisode struct{}
 
-func (e *TerraformEpisode) SetupEpisode() error {
+func (e *TerraformEpisode) EpisodeSetup() error {
 	return nil
 }
 
-func (e *TerraformEpisode) RunEpisode() error {
+func (e *TerraformEpisode) EpisodeRun() error {
 	return nil
 }
 
-func (e *TerraformEpisode) CleanupEpisode() error {
+func (e *TerraformEpisode) EpisodeCleanup() error {
 	return nil
 }

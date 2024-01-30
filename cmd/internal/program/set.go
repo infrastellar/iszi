@@ -19,7 +19,7 @@ var SubCmdSet = &cli.Command{
 			return err
 		}
 
-		err := os.WriteFile(base.CommandProgramFilePath, []byte(cwd), 0640)
+		err = os.WriteFile(base.ConfigProgramFilePath, []byte(cwd), 0640)
 		if err != nil {
 			return err
 		}

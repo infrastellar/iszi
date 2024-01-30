@@ -1,9 +1,9 @@
 package base
 
 type CommandConfig struct {
-	LogsDir    string    `json:"logs"`
-	Repository string    `json:"repository"`
-	Programs   []Program `json:"programs,omitempty"`
+	LogsDir    string     `json:"logs"`
+	Repository string     `json:"repository"`
+	Programs   []*Program `json:"programs,omitempty"`
 }
 
 type Program struct {

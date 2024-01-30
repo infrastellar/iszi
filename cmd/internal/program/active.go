@@ -14,7 +14,7 @@ var SubCmdActive = &cli.Command{
 	Usage:       "Retrieve the path to the active program",
 	Description: "Retrieve the path to the active program",
 	Action: func(cCtx *cli.Context) error {
-		file, err := os.ReadFile(base.CommandProgramFilePath)
+		file, err := os.ReadFile(base.ConfigProgramFilePath)
 		if err != nil {
 			return err
 		}

@@ -1,5 +1,9 @@
 package base
 
+import (
+	"github.com/urfave/cli/v2"
+)
+
 const (
 	CommandName        = "iszi"
 	CommandUsage       = "ISZI: Infrastellar Systems Zeropoint Interface"
@@ -10,10 +14,4 @@ const (
 	CommandProgramEnvVar   = "INFRASTELLAR_PROGRAM"
 )
 
-var SubCommands = []*cli.Command{
-	CmdConfig,
-	CmdProgram,
-	// CmdEnvironment,
-	// CmdMission,
-	// CmdSpace,
-}
+var GlobalFlags = []cli.Flag{}

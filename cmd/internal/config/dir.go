@@ -2,7 +2,6 @@ package config
 
 import (
 	"fmt"
-	"path/filepath"
 
 	"github.com/urfave/cli/v2"
 
@@ -25,7 +24,7 @@ var (
 		},
 		Action: func(cCtx *cli.Context) error {
 			if flagLogs {
-				fmt.Println(base.ConfigLogsDir)
+				fmt.Println(base.ConfigLogDir)
 				return nil
 			}
 			fmt.Println(base.ConfigDir)

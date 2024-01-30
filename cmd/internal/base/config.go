@@ -3,10 +3,10 @@ package base
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"runtime/debug"
+	"strings"
 
 	"github.com/adrg/xdg"
 )
@@ -29,7 +29,7 @@ func UserConfigHome() string {
 	return filepath.Join(os.Getenv("HOME"), ".config")
 }
 
-func CommandRepostory() string {
+func CommandRepository() string {
 	info, _ := debug.ReadBuildInfo()
 	return info.Path
 }
@@ -43,9 +43,8 @@ func ConfigNew() error {
 	repo := CommandRepository()
 
 	cfgdata := CommandConfig{
-		LogsDir:     ConfigLogDir,
-		Repository:  repo,
-		RootAccount: root,
+		LogsDir:    ConfigLogDir,
+		Repository: repo,
 	}
 
 	for _, dir := range []string{ConfigLogDir} {
@@ -65,12 +64,12 @@ func ConfigNew() error {
 		return err
 	}
 
-	fmt.Printf("%s configuration has been initialized\n", string.ToUpper(CommandName))
+	fmt.Printf("%s configuration has been initialized\n", strings.ToUpper(CommandName))
 
 	return nil
 }
 
-func ConfigUpdatePrograms(program Program) error {
+func ConfigUpdatePrograms(program *Program) error {
 	raw, err := os.ReadFile(ConfigFilePath)
 	if err != nil {
 		return err
@@ -78,11 +77,14 @@ func ConfigUpdatePrograms(program Program) error {
 
 	var cfg CommandConfig
 
-	cfgdata, err := json.Unmarshal(raw, &cfg)
+	err = json.Unmarshal(raw, &cfg)
+	if err != nil {
+		return err
+	}
 
-	cfgdata.Programs = append(cfgdata.Programs, program)
+	cfg.Programs = append(cfg.Programs, program)
 
-	json, err := json.MarshalIndent(cfgdata, "", "  ")
+	json, err := json.MarshalIndent(cfg, "", "  ")
 	if err != nil {
 		return err
 	}

@@ -1,7 +1,6 @@
 package program
 
 import (
-	"fmt"
 	"os"
 
 	"github.com/urfave/cli/v2"
@@ -14,7 +13,7 @@ var SubCmdUnset = &cli.Command{
 	Usage:       "Unset the active program",
 	Description: "Unset the active program",
 	Action: func(cCtx *cli.Context) error {
-		err := os.RemoveAll(base.CommandProgramFilePath)
+		err := os.RemoveAll(base.ConfigProgramFilePath)
 		if err != nil {
 			return err
 		}

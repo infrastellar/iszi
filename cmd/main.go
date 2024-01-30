@@ -8,6 +8,14 @@ import (
 	"github.com/infrastellar/iszi/cmd/internal/base"
 )
 
+var SubCommands = []*cli.Command{
+	CmdConfig,
+	CmdProgram,
+	// CmdEnvironment,
+	// CmdMission,
+	// CmdSpace,
+}
+
 func NewApp(cfg map[string]any) *cli.App {
 	app := &cli.App{
 		Name:        base.CommandName,
@@ -23,7 +31,7 @@ func NewApp(cfg map[string]any) *cli.App {
 
 	// Global flags
 	app.Flags = append(app.Flags, base.GlobalFlags...)
-	app.Commands = base.SubCommands
+	app.Commands = SubCommands
 
 	return app
 }
