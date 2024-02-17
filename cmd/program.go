@@ -8,7 +8,7 @@ import (
 
 var CmdProgram = &cli.Command{
 	Name:        "program",
-	Usage:       "Interface with an Infrastellar Space Program",
+	Usage:       "Interact with an Infrastellar Space Program",
 	Description: "Interact with an Infrastellar Space Program infrastructure setup",
 	Subcommands: []*cli.Command{
 		program.SubCmdActive,

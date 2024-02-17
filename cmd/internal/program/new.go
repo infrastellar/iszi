@@ -104,6 +104,6 @@ func newProgram(cCtx *cli.Context) error {
 	fmt.Println("Infrastellar Space Program created!")
 	fmt.Println("")
 	fmt.Println("In order to start using this program, run the following:")
-	fmt.Printf("\texport %s=%s\n", base.CommandProgramEnvVar, fPath)
+	fmt.Printf("\texport %s=%s\n", base.EnvVarProgram, fPath)
 	return nil
 }

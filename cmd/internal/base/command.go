@@ -11,7 +11,17 @@ const (
 
 	CommandConfigFileName  = "config.json"
 	CommandProgramFileName = "PROGRAM"
-	CommandProgramEnvVar   = "INFRASTELLAR_PROGRAM"
+
+	// Environment Variables
+	EnvVarProgram = "INFRASTELLAR_PROGRAM"
+	// Environment Variables we can use instead of command line arguments
+	// The following envvar values are all relative to the INFRASTELLAR_PROGRAM
+	EnvVarEnvironment = "INFRASTELLAR_ENVIRONMENT"
+	EnvVarEnvRegion   = "INFRASTELLAR_ENVIRONMENT_REGION"
+	EnvVarMission     = "INFRASTELLAR_MISSION"
+	EnvVarStage       = "INFRASTELLAR_STAGE"
+	EnvVarProcedure   = "INFRASTELLAR_PROCEDURE"
 )
 
+// GlobalFlags represents global flags for the command
 var GlobalFlags = []cli.Flag{}

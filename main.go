@@ -9,8 +9,6 @@ import (
 	"github.com/infrastellar/iszi/cmd"
 )
 
-var cfg map[string]interface{}
-
 func main() {
 	// We pass this as metadata to our app command for use later
 	cfg := map[string]interface{}{

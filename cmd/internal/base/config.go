@@ -19,6 +19,9 @@ var (
 	ConfigProgramFilePath string = fmt.Sprintf("%s/%s", ConfigDir, CommandProgramFileName)
 )
 
+// UserConfigHome manages the user preference for where we store the
+// configuration for our command. Use XDG_CONFIG_HOME if it is set, otherwise
+// derive a similar path ourselves.
 func UserConfigHome() string {
 	// Check whether the user configured a standard configuration home
 	_, ok := os.LookupEnv("XDG_CONFIG_HOME")
@@ -29,16 +32,19 @@ func UserConfigHome() string {
 	return filepath.Join(os.Getenv("HOME"), ".config")
 }
 
+// CommandRepository is a helper command to point to the repository
 func CommandRepository() string {
 	info, _ := debug.ReadBuildInfo()
 	return info.Path
 }
 
+// CommandRepositoryURL is a helper command to point to the repository remote
 func CommandRepostoryURL() string {
 	repo := CommandRepository()
 	return fmt.Sprintf("https://%s", repo)
 }
 
+// ConfigNew creates a new command configuration setup
 func ConfigNew() error {
 	repo := CommandRepository()
 
@@ -69,6 +75,14 @@ func ConfigNew() error {
 	return nil
 }
 
+func ConfigInitialized() bool {
+	if _, err := os.Stat(ConfigDir); !os.IsNotExist(err) {
+		return true
+	}
+	return false
+}
+
+// ConfigUpdatePrograms manages the file where we stash our current program path
 func ConfigUpdatePrograms(program *Program) error {
 	raw, err := os.ReadFile(ConfigFilePath)
 	if err != nil {
