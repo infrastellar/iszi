@@ -1,1 +1,1 @@
-# ISZI: Infrastellar Systems Zeropoint Interface
+# Infrastellar Zeropoint Interface (iszi)
