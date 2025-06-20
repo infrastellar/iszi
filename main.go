@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	infrastellar "github.com/infrastellar/is-sdk-go-v1/cmd"
+	infrastellar "github.com/infrastellar/is-sdk-go-v1/is/cmd"
 	"github.com/urfave/cli/v3"
 )
 
